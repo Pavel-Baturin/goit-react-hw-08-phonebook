@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
-import { changeFilter } from '../../redux/filterSlice';
+import { changeFilter } from '../../redux/contacts/filterSlice';
 import s from './Filter.module.css';
 
 function Filter() {

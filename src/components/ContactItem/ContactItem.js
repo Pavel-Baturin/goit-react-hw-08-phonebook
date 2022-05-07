@@ -1,4 +1,4 @@
-import { useDeleteContactMutation } from '../../redux/contactApi';
+import { useDeleteContactMutation } from '../../redux/contacts/contactApi';
 import { ThreeDots } from 'react-loader-spinner';
 import s from './ContactItem.module.css';
 

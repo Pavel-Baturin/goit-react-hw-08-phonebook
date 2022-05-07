@@ -1,0 +1,20 @@
+.box {
+  margin-bottom: 20px;
+  padding: 16px 0px;
+  border-bottom: solid 1px black;
+  background-color: darkgray;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 30px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+  max-width: 1200px;
+}

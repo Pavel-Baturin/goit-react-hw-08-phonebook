@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useGetContactQuery } from '../../redux/contactApi';
+import { useGetContactQuery } from '../../redux/contacts/contactApi';
 import { TailSpin } from 'react-loader-spinner';
 import ContactItem from '../ContactItem/ContactItem';
 import s from './ContactList.module.css';
@@ -19,7 +19,11 @@ export default function ContactList() {
   return (
     <ul className={s.list}>
       {isFetching && <TailSpin color="lightblue" height={200} width={200} />}
-      {isError && <div className={s.error}>{error.status} </div>}
+      {isError && (
+        <div
+          className={s.error}
+        >{`ERROR: ${error.status} ${error.data.message}`}</div>
+      )}
       {filtredContacts &&
         !isFetching &&
         filtredContacts.map(contact => (

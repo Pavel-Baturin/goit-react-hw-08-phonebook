@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import {
-  useAddContactMutation,
-  useGetContactQuery,
-} from '../../redux/contacts/contactApi';
-import toast from 'react-hot-toast';
-import s from './ContactForm.module.css';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/auth-operations';
+import s from './RegisterPage.module.css';
 
-function ContactForm() {
+export default function RegisterPage() {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [addContact] = useAddContactMutation();
-  const { data: contacts, isSuccess } = useGetContactQuery();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -19,8 +16,11 @@ function ContactForm() {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setNumber(value);
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
         break;
 
       default:
@@ -30,23 +30,10 @@ function ContactForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const findContact = contacts?.some(contact =>
-      contact.name.toLowerCase().includes(name.toLowerCase())
-    );
-
-    if (findContact) {
-      toast.error(`${name} is already in contacts!!!`);
-      return;
-    }
-    console.log(name, number);
-    addContact(name, number);
-
-    if (isSuccess) {
-      toast.success(`${name} added to contact list`);
-    }
-
+    dispatch(register({ name, email, password }));
     setName('');
-    setNumber('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -65,23 +52,31 @@ function ContactForm() {
         />
       </label>
       <label className={s.label}>
-        Number
+        Email
         <input
           className={s.input}
-          type="tel"
-          name="number"
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          type="email"
+          name="email"
           required
-          value={number}
+          value={email}
+          onChange={handleInputChange}
+        />
+      </label>
+      <label className={s.label}>
+        Password
+        <input
+          className={s.input}
+          type="password"
+          name="password"
+          autoComplete="off"
+          required
+          value={password}
           onChange={handleInputChange}
         />
       </label>
       <button className={s.button} type="submit">
-        Add contact
+        Register
       </button>
     </form>
   );
 }
-
-export default ContactForm;

@@ -1,0 +1,12 @@
+.box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  padding: 10px;
+  background-color: #efefef;
+  border: solid 2px black;
+  border-radius: 5px;
+}
