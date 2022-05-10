@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
-import { changeFilter } from '../../redux/contacts/filterSlice';
+import { getFilter } from 'redux/contacts/contacts-selectors';
+import { changeFilter } from 'redux/contacts/filterSlice';
 import s from './Filter.module.css';
 
 function Filter() {
-  const value = useSelector(state => state.filter.value);
+  const value = useSelector(getFilter);
 
   const dispatch = useDispatch();
   return (

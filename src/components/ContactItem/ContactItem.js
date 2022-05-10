@@ -1,21 +1,22 @@
-import { useDeleteContactMutation } from '../../redux/contacts/contactApi';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contacts/contacts-operations';
+import { getIsFetching } from 'redux/contacts/contacts-selectors';
 import { ThreeDots } from 'react-loader-spinner';
 import s from './ContactItem.module.css';
 
-function ContactItem({ id, name, phone }) {
-  const [deleteContact, { isLoading }] = useDeleteContactMutation();
+function ContactItem({ contactId, name, number }) {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsFetching);
 
   return (
     <>
       <li className={s.item}>
-        {name}: {phone}
+        {name}: {number}
         <button
           disabled={isLoading}
           className={s.button}
           type="button"
-          onClick={() => {
-            deleteContact(id);
-          }}
+          onClick={() => dispatch(deleteContact(contactId))}
         >
           {isLoading ? (
             <ThreeDots color="lightblue" height={15} width={40} />

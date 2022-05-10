@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import {
-  useAddContactMutation,
-  useGetContactQuery,
-} from '../../redux/contacts/contactApi';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContacts } from 'redux/contacts/contacts-selectors';
+import { addContact } from 'redux/contacts/contacts-operations';
 import toast from 'react-hot-toast';
 import s from './ContactForm.module.css';
 
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [addContact] = useAddContactMutation();
-  const { data: contacts, isSuccess } = useGetContactQuery();
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -38,12 +37,10 @@ function ContactForm() {
       toast.error(`${name} is already in contacts!!!`);
       return;
     }
-    console.log(name, number);
-    addContact(name, number);
 
-    if (isSuccess) {
-      toast.success(`${name} added to contact list`);
-    }
+    dispatch(addContact({ name, number }));
+
+    toast.success(`${name} added to contact list`);
 
     setName('');
     setNumber('');
@@ -70,8 +67,8 @@ function ContactForm() {
           className={s.input}
           type="tel"
           name="number"
-          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={number}
           onChange={handleInputChange}

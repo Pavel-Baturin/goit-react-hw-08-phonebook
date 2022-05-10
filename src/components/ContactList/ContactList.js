@@ -1,33 +1,37 @@
-import { useSelector } from 'react-redux';
-import { useGetContactQuery } from '../../redux/contacts/contactApi';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { TailSpin } from 'react-loader-spinner';
+import { fetchContacts } from 'redux/contacts/contacts-operations';
+import {
+  getContacts,
+  getIsFetching,
+  getError,
+  getFilter,
+} from 'redux/contacts/contacts-selectors';
 import ContactItem from '../ContactItem/ContactItem';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
-  const { data: contacts, isFetching, error, isError } = useGetContactQuery();
+  const contacts = useSelector(getContacts);
+  const isFetching = useSelector(getIsFetching);
+  const error = useSelector(getError);
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
 
-  const filter = useSelector(state => state.filter.value);
-  const getFiltredContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts?.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
-  const filtredContacts = getFiltredContacts();
+  useEffect(() => dispatch(fetchContacts()), [dispatch]);
+
+  const filtredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <ul className={s.list}>
       {isFetching && <TailSpin color="lightblue" height={200} width={200} />}
-      {isError && (
-        <div
-          className={s.error}
-        >{`ERROR: ${error.status} ${error.data.message}`}</div>
-      )}
-      {filtredContacts &&
+      {error && <div className={s.error}>{`ERROR: ${error} ${error}`}</div>}
+      {filtredContacts.length > 0 &&
         !isFetching &&
-        filtredContacts.map(contact => (
-          <ContactItem key={contact.id} {...contact} />
+        filtredContacts.map(({ id, name, number }) => (
+          <ContactItem key={id} contactId={id} name={name} number={number} />
         ))}
     </ul>
   );
