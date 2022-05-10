@@ -2,4 +2,6 @@ const getUserEmail = state => state.auth.user.email;
 
 const getIsLoggedIn = state => state.auth.isLoggedIn;
 
-export { getUserEmail, getIsLoggedIn };
+const getIsFetchingUser = state => state.auth.isFetchingUser;
+
+export { getUserEmail, getIsLoggedIn, getIsFetchingUser };

@@ -6,7 +6,7 @@ import AuthNav from 'components/AuthNav/AuthNav';
 import UserMenu from 'components/UserMenu/UserMenu';
 import s from './Layout.module.css';
 
-export default function Layout() {
+function Layout() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <>
@@ -22,3 +22,5 @@ export default function Layout() {
     </>
   );
 }
+
+export { Layout };

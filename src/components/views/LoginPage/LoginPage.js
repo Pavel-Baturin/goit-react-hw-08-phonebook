@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 import { logIn } from 'redux/auth/auth-operations';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import s from './LoginPage.module.css';
 
 export default function LoginPage() {
@@ -27,43 +28,43 @@ export default function LoginPage() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    // if (isSuccess) {
-    //   toast.success(`${name} added to contact list`);
-    // }
     dispatch(logIn({ email, password }));
+    toast.success('Welcome to the application Phonebook');
     setEmail('');
     setPassword('');
   };
 
   return (
-    <form className={s.form} onSubmit={handleSubmit}>
-      <label className={s.label}>
-        Email
-        <input
-          className={s.input}
-          type="email"
-          name="email"
-          required
-          value={email}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label className={s.label}>
-        Password
-        <input
-          className={s.input}
-          type="password"
-          name="password"
-          autoComplete="off"
-          required
-          value={password}
-          onChange={handleInputChange}
-        />
-      </label>
-      <button className={s.button} type="submit">
-        Login
-      </button>
-    </form>
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <form className={s.form} onSubmit={handleSubmit}>
+        <label className={s.label}>
+          Email
+          <input
+            className={s.input}
+            type="email"
+            name="email"
+            required
+            value={email}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label className={s.label}>
+          Password
+          <input
+            className={s.input}
+            type="password"
+            name="password"
+            autoComplete="off"
+            required
+            value={password}
+            onChange={handleInputChange}
+          />
+        </label>
+        <button className={s.button} type="submit">
+          Login
+        </button>
+      </form>
+    </>
   );
 }

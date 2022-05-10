@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { TailSpin } from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 import { fetchContacts } from 'redux/contacts/contacts-operations';
 import {
   getContacts,
@@ -27,7 +28,7 @@ export default function ContactList() {
   return (
     <ul className={s.list}>
       {isFetching && <TailSpin color="lightblue" height={200} width={200} />}
-      {error && <div className={s.error}>{`ERROR: ${error} ${error}`}</div>}
+      {error && <div className={s.error}>{`ERROR: ${error.message}`}</div>}
       {filtredContacts.length > 0 &&
         !isFetching &&
         filtredContacts.map(({ id, name, number }) => (
@@ -36,3 +37,9 @@ export default function ContactList() {
     </ul>
   );
 }
+
+ContactList.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};

@@ -15,7 +15,7 @@ const items = createReducer([], {
 
 const isFetching = createReducer(false, {
   [addContact.pending]: () => true,
-  [deleteContact.pending]: () => true,
+  [deleteContact.pending]: () => false,
   [fetchContacts.pending]: () => true,
 
   [addContact.fulfilled]: () => false,
@@ -25,6 +25,12 @@ const isFetching = createReducer(false, {
   [addContact.rejected]: () => false,
   [deleteContact.rejected]: () => false,
   [fetchContacts.rejected]: () => false,
+});
+
+const isDeliting = createReducer(false, {
+  [deleteContact.pending]: () => true,
+  [deleteContact.fulfilled]: () => false,
+  [deleteContact.rejected]: () => false,
 });
 
 const error = createReducer(null, {
@@ -39,5 +45,6 @@ const error = createReducer(null, {
 export default combineReducers({
   items,
   isFetching,
+  isDeliting,
   error,
 });
