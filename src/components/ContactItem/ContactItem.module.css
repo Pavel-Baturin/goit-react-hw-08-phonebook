@@ -1,7 +1,7 @@
 .item {
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 5px 10px;
   margin-top: 5px;
   font-size: 18px;
   background-color: #efefef;

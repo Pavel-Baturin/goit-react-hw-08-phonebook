@@ -1,12 +1,24 @@
 .box {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
+}
+
+.phone {
+  width: 30px;
+  margin-right: 10px;
 }
 
 .title {
+  display: flex;
   padding: 10px;
   background-color: #efefef;
   border: solid 2px black;
   border-radius: 5px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }

@@ -1,11 +1,21 @@
 .box {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
+  display: inline-flex;
+  margin-bottom: 20px;
   padding: 10px;
   background-color: #efefef;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+
+.phone {
+  max-width: 100%;
+  height: auto;
   border: solid 2px black;
   border-radius: 5px;
 }

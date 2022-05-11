@@ -1,13 +1,27 @@
 .box {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: 10px;
+  max-width: 40px;
+  border: solid 2px lightblue;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 500;
+  color: lightblue;
 }
 
 .button {
-  margin-left: 10px;
+  margin-left: 20px;
   padding: 7px 10px;
   border: solid 1px darkgray;
   border-radius: 5px;
+  font-weight: 700;
 }
 
 .button:hover,

@@ -26,15 +26,18 @@ export default function ContactList() {
   );
 
   return (
-    <ul className={s.list}>
-      {isFetching && <TailSpin color="lightblue" height={200} width={200} />}
-      {error && <div className={s.error}>{`ERROR: ${error.message}`}</div>}
-      {filtredContacts.length > 0 &&
-        !isFetching &&
-        filtredContacts.map(({ id, name, number }) => (
-          <ContactItem key={id} contactId={id} name={name} number={number} />
-        ))}
-    </ul>
+    <div>
+      <h3 className={s.title}>Contact list:</h3>
+      <ul className={s.list}>
+        {isFetching && <TailSpin color="lightblue" height={200} width={200} />}
+        {error && <div className={s.error}>{`ERROR: ${error.message}`}</div>}
+        {filtredContacts.length > 0 &&
+          !isFetching &&
+          filtredContacts.map(({ id, name, number }) => (
+            <ContactItem key={id} contactId={id} name={name} number={number} />
+          ))}
+      </ul>
+    </div>
   );
 }
 
