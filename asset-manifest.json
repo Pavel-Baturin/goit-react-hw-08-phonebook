@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.44063204.css",
+    "main.js": "/static/js/main.aa89d866.js",
+    "static/css/821.a84c1a17.chunk.css": "/static/css/821.a84c1a17.chunk.css",
+    "static/js/821.0ef919ce.chunk.js": "/static/js/821.0ef919ce.chunk.js",
+    "static/css/182.ccbf3021.chunk.css": "/static/css/182.ccbf3021.chunk.css",
+    "static/js/182.a7659804.chunk.js": "/static/js/182.a7659804.chunk.js",
+    "static/css/13.aaab0b31.chunk.css": "/static/css/13.aaab0b31.chunk.css",
+    "static/js/13.06c68694.chunk.js": "/static/js/13.06c68694.chunk.js",
+    "static/css/296.c6c4719d.chunk.css": "/static/css/296.c6c4719d.chunk.css",
+    "static/js/296.34303073.chunk.js": "/static/js/296.34303073.chunk.js",
+    "static/js/281.fb227d4b.chunk.js": "/static/js/281.fb227d4b.chunk.js",
+    "static/js/140.374de585.chunk.js": "/static/js/140.374de585.chunk.js",
+    "static/js/283.f0ad841d.chunk.js": "/static/js/283.f0ad841d.chunk.js",
+    "index.html": "/index.html",
+    "main.44063204.css.map": "/static/css/main.44063204.css.map",
+    "main.aa89d866.js.map": "/static/js/main.aa89d866.js.map",
+    "821.a84c1a17.chunk.css.map": "/static/css/821.a84c1a17.chunk.css.map",
+    "821.0ef919ce.chunk.js.map": "/static/js/821.0ef919ce.chunk.js.map",
+    "182.ccbf3021.chunk.css.map": "/static/css/182.ccbf3021.chunk.css.map",
+    "182.a7659804.chunk.js.map": "/static/js/182.a7659804.chunk.js.map",
+    "13.aaab0b31.chunk.css.map": "/static/css/13.aaab0b31.chunk.css.map",
+    "13.06c68694.chunk.js.map": "/static/js/13.06c68694.chunk.js.map",
+    "296.c6c4719d.chunk.css.map": "/static/css/296.c6c4719d.chunk.css.map",
+    "296.34303073.chunk.js.map": "/static/js/296.34303073.chunk.js.map",
+    "281.fb227d4b.chunk.js.map": "/static/js/281.fb227d4b.chunk.js.map",
+    "140.374de585.chunk.js.map": "/static/js/140.374de585.chunk.js.map",
+    "283.f0ad841d.chunk.js.map": "/static/js/283.f0ad841d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44063204.css",
+    "static/js/main.aa89d866.js"
+  ]
+}
