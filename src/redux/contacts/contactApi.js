@@ -20,7 +20,7 @@ const addContactApi = async contactObj => {
 
 const deleteContactApi = async contactId => {
   try {
-    const { data } = await axios.delete(`/contacts/${contactId}`);
+    await axios.delete(`/contacts/${contactId}`);
     return contactId;
   } catch (error) {
     return error.message;

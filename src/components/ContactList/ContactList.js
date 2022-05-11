@@ -39,7 +39,7 @@ export default function ContactList() {
 }
 
 ContactList.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  number: PropTypes.string,
 };

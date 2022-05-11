@@ -31,7 +31,7 @@ function ContactItem({ contactId, name, number }) {
 }
 
 ContactItem.propTypes = {
-  contactId: PropTypes.number.isRequired,
+  contactId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
 };
