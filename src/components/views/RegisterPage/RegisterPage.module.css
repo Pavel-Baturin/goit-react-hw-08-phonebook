@@ -43,3 +43,9 @@
 .input:focus {
   border: solid 1px lightblue;
 }
+
+.error {
+  margin-top: 20px;
+  text-align: center;
+  color: red;
+}

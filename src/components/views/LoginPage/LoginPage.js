@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { logIn } from 'redux/auth/auth-operations';
-import toast from 'react-hot-toast';
 import s from './LoginPage.module.css';
 
 export default function LoginPage() {
+  const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +29,6 @@ export default function LoginPage() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(logIn({ email, password }));
-    toast.success('Welcome to the application Phonebook');
     setEmail('');
     setPassword('');
   };
@@ -44,6 +43,7 @@ export default function LoginPage() {
             className={s.input}
             type="email"
             name="email"
+            placeholder="jane@sample.com"
             required
             value={email}
             onChange={handleInputChange}
@@ -56,6 +56,8 @@ export default function LoginPage() {
             type="password"
             name="password"
             autoComplete="off"
+            placeholder="enter at least 7 characters"
+            minLength={7}
             required
             value={password}
             onChange={handleInputChange}
@@ -65,6 +67,7 @@ export default function LoginPage() {
           Login
         </button>
       </form>
+      {error && <h1 className={s.error}>{error}</h1>}
     </>
   );
 }

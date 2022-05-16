@@ -15,15 +15,25 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [register.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
     [logIn.fulfilled]: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [logIn.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
     [logOut.fulfilled]: state => {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.error = null;
+    },
+    [logOut.rejected]: (state, action) => {
+      state.error = action.payload;
     },
     [fetchCurrentUser.pending](state) {
       state.isFetchingUser = true;

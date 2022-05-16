@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import toast from 'react-hot-toast';
 import { register } from 'redux/auth/auth-operations';
 import s from './RegisterPage.module.css';
 
 export default function RegisterPage() {
+  const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,7 +33,6 @@ export default function RegisterPage() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
-    toast.success(`Welcome ${name} to the application Phonebook`);
     setName('');
     setEmail('');
     setPassword('');
@@ -62,6 +61,7 @@ export default function RegisterPage() {
             className={s.input}
             type="email"
             name="email"
+            placeholder="jane@sample.com"
             required
             value={email}
             onChange={handleInputChange}
@@ -74,6 +74,8 @@ export default function RegisterPage() {
             type="password"
             name="password"
             autoComplete="off"
+            placeholder="enter at least 7 characters"
+            minLength={7}
             required
             value={password}
             onChange={handleInputChange}
@@ -83,6 +85,7 @@ export default function RegisterPage() {
           Register
         </button>
       </form>
+      {error && <h1 className={s.error}>{error}</h1>}
     </>
   );
 }

@@ -9,16 +9,20 @@ export default function UserMenu() {
 
   const dispatch = useDispatch();
   return (
-    <div className={s.box}>
-      <img src={avatar} alt="user" className={s.avatar} />
-      <p className={s.name}>{name}</p>
-      <button
-        type="button"
-        className={s.button}
-        onClick={() => dispatch(logOut())}
-      >
-        Logout
-      </button>
-    </div>
+    <>
+      {name && (
+        <div className={s.box}>
+          <img src={avatar} alt="user" className={s.avatar} />
+          <p className={s.name}>{name}</p>
+          <button
+            type="button"
+            className={s.button}
+            onClick={() => dispatch(logOut())}
+          >
+            Logout
+          </button>
+        </div>
+      )}
+    </>
   );
 }
